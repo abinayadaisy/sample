@@ -3,7 +3,7 @@
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <title> Login Page </title>  
-<style>   
+<style> 
 Body {  
   font-family: Calibri, Helvetica, sans-serif;  
   background-color: pink;  
@@ -43,7 +43,37 @@ button {
         background-color: lightblue;  
     }   
 </style>   
-</head>    
+</head> 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+function sendEvent(){
+var axios = require('axios');
+var data = JSON.stringify({
+  "sender": "110158513033400240062788020228",
+  "data": {
+    "payload": "Hello"
+  }
+});
+
+var config = {
+  method: 'post',
+  url: 'https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
+  headers: { 
+    'Authorization': 'a9c98444d894bba9b4a1928ddc72', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+</script>
 <body>    
     <center> <h1> Login </h1> </center>   
     <form>  
@@ -52,8 +82,8 @@ button {
             <input type="text" placeholder="Enter Username" name="username" required>  
             <label>Password : </label>   
             <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit">Login</button>   
-           
+            <button type="submit" onclick="sendEvent()">Login</button>   
+
         </div>   
     </form>     
 </body>     
