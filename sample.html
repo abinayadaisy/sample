@@ -1,8 +1,8 @@
 <!DOCTYPE html>   
 <html>   
 <head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Login Page </title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta charset="UTF-8">
 <style> 
 Body {  
   font-family: Calibri, Helvetica, sans-serif;  
@@ -44,35 +44,31 @@ button {
     }   
 </style>   
 </head> 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 function sendEvent(){
-var axios = require('axios');
-var data = JSON.stringify({
-  "sender": "110158513033400240062788020228",
-  "data": {
-    "payload": "Hello"
-  }
-});
-
-var config = {
-  method: 'post',
-  url: 'https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
-  headers: { 
-    'Authorization': 'a9c98444d894bba9b4a1928ddc72', 
-    'Content-Type': 'application/json'
+try {
+fetch('https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
+ {
+  method: 'POST',
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'a9c98444d894bba9b4a1928ddc72'
   },
-  data : data
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
+  body: JSON.stringify({
+    "sender": "110158513033400240062788020228",
+    "data": {
+        "payload": "Hello"
+    }
 })
-.catch(function (error) {
-  console.log(error);
-});
-
+}).then(response => response.json())
+.then(data => console.log(data)).catch(error=>console.log(error))
+}
+ catch(E){
+   console.log(E+"nk")
+ }
+}
 </script>
 <body>    
     <center> <h1> Login </h1> </center>   
