@@ -44,10 +44,13 @@ button {
     }   
 </style>   
 </head> 
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 function sendEvent(){
 try {
-fetch('https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
+fetch('https://cors-anywhere.herokuapp.com/https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
  {
   method: 'POST',
   headers: {
@@ -78,7 +81,7 @@ fetch('https://cloud.yellow.ai/integrations/sendevent/capture/x1675745775495',
             <input type="text" placeholder="Enter Username" name="username" required>  
             <label>Password : </label>   
             <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit" onclick="sendEvent()">Login</button>   
+            <button type="submit" onclick= sendEvent() >Login</button>   
 
         </div>   
     </form>     
