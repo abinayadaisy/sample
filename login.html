@@ -15,7 +15,7 @@
       }
       input[type="text"],
       input[type="email"],
-      input[type="tel"] {
+      input[type="password"] {
         width: 50%;
         padding: 10px;
         margin-bottom: 0px;
@@ -41,40 +41,25 @@
   </head>
   <body>
     <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email"><br><br>
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone"><br><br>
-      <label for="policy-number">Policy Number:</label>
-      <input type="text" id="policy-number" name="policy-number" required>
+      <label for="email">User Email:</label>
+      <input type="email" placeholder="Enter Login Email" id="email" name="email"><br><br>
+      <label>Password : </label>   
+        <input type="password" placeholder="Enter Password" id ="password" name="password" required>  
       <input type="submit" value="Submit" onclick="storepersonalDetails()">
     </form>
     <script>
       function storepersonalDetails() {
      console.log("CheckCheck")
-      /* Get the values from the form inputs */
-      var name = document.getElementById("name").value;
-     console.log(name)
       var email = document.getElementById("email").value;
-      var phone = document.getElementById("phone").value;
-        var policynumber =document.getElementById("policy-number").value;
-     // var BankBranch = document.getElementById("Bank Branch").value;
-      console.log(name);
+      var password = document.getElementById("password").value;
      console.log(email)
-     console.log(phone)
-     console.log(policynumber)
-      /* Store the values in an object */
+     console.log(password)
       var accountDetails = {
-        name: name,
         email: email,
-        phone: phone,
-         policynumber:policynumber
+        password: password,
       };
-     var a =name + '/'+email +'/' +phone+'/'+policynumber;
+     var a =email +'/' +password+'/';
       console.log(a)
-      /* Log the account details to the console for now */
 window.parent.postMessage(
        JSON.stringify({
                     event_code: "ym-client-event",
